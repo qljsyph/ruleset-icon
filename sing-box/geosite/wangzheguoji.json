@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "hok-dr.intlgame.com",
+        "hok.intlgame.com",
+        "intlgame.com",
+        "appsflyersdk.com",
+        "sgameglobal.com",
+        "stamp.mp.nexon.com",
+        "m.nexon.com",
+        "ba.dn.nexoncdn.co.kr",
+        "nxm-eu-bagl.nexon.com",
+        "api.ngsm.nexon.com",
+        "log.ngsm.nexon.com",
+        "sdk-push.mp.nexon.com",
+        "m-api.nexon.com",
+        "jp.livelog.nexon.com"
+      ]
+    },
+    {
+      "domain_keyword": [
+        "sgameglobal.com"
+      ]
+    }
+  ]
+}
