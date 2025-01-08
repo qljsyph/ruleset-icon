@@ -38,7 +38,6 @@ jobs:
         git remote add ruleset https://github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/singbox
-        rm -rf domainset ip non_ip
         mkdir -p sing-box/geoip sing-box/geosite
         for file in rule/singbox/*; do
             filename=$(basename "$file")
