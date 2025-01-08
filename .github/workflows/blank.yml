@@ -52,6 +52,14 @@ jobs:
                 mv "$file" sing-box/geosite/
             fi
         done
+        rm -rf rule/singbox sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
+        find . -type f -name "*.srs" -exec rm -f {} \;
+        find . -type f -name "*.json" -exec bash -c '
+        echo "Compiling: $1"
+        if ! sing-box rule-set compile "$1"; then
+          echo "Error compiling $1"
+          exit 1
+        fi
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
