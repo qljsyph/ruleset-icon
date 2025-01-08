@@ -35,7 +35,6 @@ jobs:
 
     - name: Fetch and Compile Sing-Box Rules from rules-icon
       run: |
-       run: |
         git remote add ruleset https://github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/singbox
