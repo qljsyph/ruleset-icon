@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "r3zj0yju1q.adobe.io", 
+        "9ngulmtgqi.adobe.io",
+        "stls.adobe.com-cn.edgesuite.net.globalredir.akadns.net"
+      ]
+    },
+    {
+      "domain_suffix": [
+        "adobe.io"
+      ]
+    },
+    {
+      "process_name": [
+        "AdobeIPCBroker"
+      ]
+    },
+    {
+      "domain_keyword": [
+        "crs.cr.adobe.io",
+        "adobe.io"
+      ]
+    }
+  ]
+}
