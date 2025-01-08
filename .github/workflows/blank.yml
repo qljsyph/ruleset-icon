@@ -35,7 +35,7 @@ jobs:
 
     - name: Fetch and Compile Sing-Box Rules from rules-icon
       run: |
-        git remote add ruleset https://github.com/qljsyph/rules-icon.git
+        git remote add ruleset https://github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/singbox
         rm -rf domainset ip non_ip
@@ -60,6 +60,7 @@ jobs:
           echo "Error compiling $1"
           exit 1
         fi
+        ' _ {} \;
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
