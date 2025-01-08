@@ -52,7 +52,6 @@ jobs:
                 mv "$file" sing-box/geosite/
             fi
         done
-        ' _ {} \;
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
