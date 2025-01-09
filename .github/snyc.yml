@@ -1,0 +1,70 @@
+name: Sync and Compile Sing-Box Rules
+
+on:
+  push:
+  schedule:
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+
+env:
+  SING_BOX_VERSION: 1.10.6
+
+jobs:
+  sync_and_compile:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git user
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Install sing-box
+      run: |
+        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
+        tar -xzf sing-box.tar.gz
+        chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
+        sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
+        sing-box version
+
+    - name: Fetch and Compile Sing-Box Rules from rules-icon
+      run: |
+        git remote add ruleset https://github.com/qljsyph/rulesedit.git
+        git fetch ruleset
+        git checkout ruleset/main -- rule/singbox
+        mkdir -p sing-box/geoip sing-box/geosite
+        for file in rule/singbox/*; do
+            filename=$(basename "$file")
+            echo "Processing file: $filename"
+            # 通过正则表达式检查文件名是否以 "-ip" 结尾
+            if [[ "$filename" =~ -ip\.(json|srs)$ ]]; then
+                echo "Moving $filename to sing-box/geoip"
+                mv "$file" sing-box/geoip/
+            else
+                echo "Moving $filename to sing-box/geosite"
+                mv "$file" sing-box/geosite/
+            fi
+        done
+        rm -rf rule/singbox sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
+        find . -type f -name "*.srs" -exec rm -f {} \;
+        find . -type f -name "*.json" -exec bash -c '
+        echo "Compiling: $1"
+        if ! sing-box rule-set compile "$1"; then
+          echo "Error compiling $1"
+          exit 1
+        fi
+        ' _ {} \;
+        git add .
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit"
+          echo "No updates needed"
+        else
+          git commit -m "Merged singbox directory from rules-icon repository"
+          git push
+        fi
