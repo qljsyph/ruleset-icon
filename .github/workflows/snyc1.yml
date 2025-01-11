@@ -3,14 +3,11 @@ name: Sync and Compile Sing-Box Rules
 on:
   push:
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 14 * * *'
   workflow_dispatch:
   
 permissions:
   contents: write
-
-env:
-  SING_BOX_VERSION: 1.10.6
 
 jobs:
   sync_and_compile:
@@ -24,6 +21,13 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Get the latest Sing-Box version
+      id: version
+      run: |
+        SING_BOX_VERSION=$(curl -sL -o /dev/null -w "%{url_effective}\n" https://github.com/SagerNet/sing-box/releases/latest | grep -oP 'tag/\K[^/]+')
+        SING_BOX_VERSION=${SING_BOX_VERSION#v}  # 去掉前缀的 v
+        echo "SING_BOX_VERSION=$SING_BOX_VERSION" >> $GITHUB_ENV
 
     - name: Install sing-box
       run: |
