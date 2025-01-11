@@ -1,0 +1,83 @@
+name: Sync and Compile Mihomo Rules
+
+on:
+  push:
+  schedule:
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [remote-push]
+
+permissions:
+  contents: write
+
+jobs:
+  sync_and_compile:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Set up Git user
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Install mihomo
+      run: |
+        version=$(curl -sL https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/version.txt)
+        curl -sL "https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-${version}.gz" | \
+          gunzip -c > /usr/local/bin/mihomo && chmod +x /usr/local/bin/mihomo
+
+    - name: Fetch and Compile Mihomo Rules
+      run: |
+        git remote add ruleset https://github.com/qljsyph/rulesedit.git
+        git fetch ruleset
+        git checkout ruleset/main -- rule/mihomo
+        mkdir -p mihomo/domain mihomo/ipcidr
+        
+        for file in rule/mihomo/*; do
+            filename=$(basename "$file")
+            echo "Processing file: $filename"
+            if [[ "$filename" =~ -ip\.(yaml|mrs)$ ]]; then
+                echo "Moving $filename to mihomo/ipcidr"
+                mv "$file" mihomo/ipcidr/
+            else
+                echo "Moving $filename to mihomo/domain"
+                mv "$file" mihomo/domain/
+            fi
+        done
+        
+        rm -rf rule/mihomo mihomo-linux-amd64-*.gz mihomo.gz
+        
+        echo "Converting domain rules..."
+        find mihomo/domain -type f -name "*.yaml" -exec bash -c '
+          input="$1"
+          output="${input%.yaml}.mrs"
+          echo "Converting: $input"
+          if ! mihomo convert-ruleset domain yaml "$input" "$output"; then
+            echo "Error converting $input"
+            exit 1
+          fi
+        ' bash {} \;
+
+        echo "Converting IP rules..."
+        find mihomo/ipcidr -type f -name "*.yaml" -exec bash -c '
+          input="$1"
+          output="${input%.yaml}.mrs"
+          echo "Converting: $input"
+          if ! mihomo convert-ruleset ipcidr yaml "$input" "$output"; then
+            echo "Error converting $input"
+            exit 1
+          fi
+        ' bash {} \;
+        
+        git add .
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit"
+          echo "No updates needed"
+        else
+          git commit -m "Updated mihomo rules"
+          git push
+        fi
