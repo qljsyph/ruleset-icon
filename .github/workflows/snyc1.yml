@@ -3,7 +3,7 @@ name: Sync and Compile Sing-Box Rules
 on:
   push:
   schedule:
-    - cron: '0 13 * * *'
+    - cron: '0 7 * * *'
   workflow_dispatch:
   
 permissions:
