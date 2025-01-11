@@ -2,7 +2,6 @@ payload:
     - +.perplexity.ai
     - +.chatgpt.com
     - +.auth0.com
-    - +.challenges.cloudflare.com
     - +.client-api.arkoselabs.com
     - +.events.statsigapi.net
     - +.featuregates.org
@@ -19,4 +18,3 @@ payload:
     - +.gemini.google.com
     - +.makersuite.google.com
     - +.anthropic.com
-    - +.claude.ai.com
