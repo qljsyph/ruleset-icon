@@ -40,10 +40,8 @@ jobs:
           gunzip -c > /usr/local/bin/mihomo && chmod +x /usr/local/bin/mihomo
 
     - name: Fetch and Compile Mihomo Rules
-      env:
-        GITHUB_PAT: ${{ secrets.syncrule }}
       run: |
-        git remote add ruleset https://x-access-token:${GITHUB_PAT}@github.com/qljsyph/rulesedit.git
+        git remote add ruleset https://github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/mihomo
         mkdir -p mihomo/domain mihomo/ipcidr
