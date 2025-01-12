@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'rule/mihomo'
+      - 'mihomo/**'
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
