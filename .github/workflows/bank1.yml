@@ -30,7 +30,7 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.syncrule }}
 
     - name: Set up Git user
       run: |
