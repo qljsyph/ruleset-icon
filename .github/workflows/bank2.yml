@@ -19,7 +19,7 @@ jobs:
           to: ${{ secrets.bot }}
           token: ${{ secrets.token }}
           message: |
-            singbox rule compile start
+            ruelset-icon singbox compile start
             
   sync_and_compile:
     runs-on: ubuntu-latest
