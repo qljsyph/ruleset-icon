@@ -1,7 +1,7 @@
 name: Sync and Compile Mihomo Rules
 
 on:
-  push:
+  # push:
     branches:
       - 'main'
     paths:
