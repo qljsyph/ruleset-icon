@@ -21,7 +21,7 @@ jobs:
           to: ${{ secrets.bot }}
           token: ${{ secrets.token }}
           message: |
-            ruelset-icon mihomo compile start
+            ruleset-icon mihomo compile start at $(date)
         
   sync_and_compile:
     runs-on: ubuntu-latest
