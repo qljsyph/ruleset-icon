@@ -2,10 +2,10 @@ name: Sync and Compile Mihomo Rules
 
 on:
   # push:
-    branches:
-      - 'main'
-    paths:
-      - 'mihomo/**'
+  #  branches:
+  #    - 'main'
+  #  paths:
+  #    - 'mihomo/**'
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
