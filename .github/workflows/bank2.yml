@@ -28,7 +28,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.syncrule }}
 
       - name: Set up Git user
         run: |
