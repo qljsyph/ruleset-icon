@@ -43,7 +43,7 @@ jobs:
       env:
         GITHUB_PAT: ${{ secrets.syncrule }}
       run: |
-        git remote add ruleset https://x-access-token:${syncrule}@github.com/qljsyph/rulesedit.git
+        git remote add ruleset https://x-access-token:${GITHUB_PAT}@github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/mihomo
         mkdir -p mihomo/domain mihomo/ipcidr
