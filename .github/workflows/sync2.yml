@@ -20,7 +20,7 @@ jobs:
           to: ${{ secrets.bot }}
           token: ${{ secrets.token }}
           message: |
-            ruleset-icon mihomo action 开始运行
+            singbox rule compile start
   sync_and_compile:
     runs-on: ubuntu-latest
 
@@ -40,8 +40,10 @@ jobs:
           gunzip -c > /usr/local/bin/mihomo && chmod +x /usr/local/bin/mihomo
 
     - name: Fetch and Compile Mihomo Rules
+      env:
+        GITHUB_PAT: ${{ secrets.syncrule }}
       run: |
-        git remote add ruleset https://github.com/qljsyph/rulesedit.git
+        git remote add ruleset https://x-access-token:${syncrule}@github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/mihomo
         mkdir -p mihomo/domain mihomo/ipcidr
