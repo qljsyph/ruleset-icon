@@ -29,6 +29,8 @@ jobs:
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4
+      with:
+          token: ${{ secrets.PAT }}
 
     - name: Set up Git user
       run: |
@@ -41,9 +43,11 @@ jobs:
         curl -sL "https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-${version}.gz" | \
           gunzip -c > /usr/local/bin/mihomo && chmod +x /usr/local/bin/mihomo
 
-    - name: Fetch and Compile Mihomo Rules
+    - name: Fetch and Compile Mihomo Rules from private repository
+      env:
+          SYNCRULE: ${{ secrets.syncrule }}
       run: |
-        git remote add ruleset https://github.com/qljsyph/rulesedit.git
+        git remote add ruleset https://${SYNCRULE}@github.com/qljsyph/rulesedit.git
         git fetch ruleset
         git checkout ruleset/main -- rule/mihomo
         mkdir -p mihomo/domain mihomo/ipcidr
