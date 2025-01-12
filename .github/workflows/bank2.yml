@@ -1,11 +1,11 @@
 name: Sync and Compile Sing-Box Rules
 
 on:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'singbox/**'
+  # push:
+  #  branches:
+  #    - 'main'
+  #  paths:
+  #    - 'singbox/**'
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
