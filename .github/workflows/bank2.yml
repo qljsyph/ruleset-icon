@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
-  
+
 permissions:
   contents: write
 
@@ -19,67 +19,70 @@ jobs:
           to: ${{ secrets.bot }}
           token: ${{ secrets.token }}
           message: |
-            ruelset-icon singbox compile start
-            
+            singbox rule compile start
+
   sync_and_compile:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v3
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
 
-    - name: Set up Git user
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Set up Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: Get the latest Sing-Box version
-      id: version
-      run: |
-        SING_BOX_VERSION=$(curl -sL -o /dev/null -w "%{url_effective}\n" https://github.com/SagerNet/sing-box/releases/latest | grep -oP 'tag/\K[^/]+')
-        SING_BOX_VERSION=${SING_BOX_VERSION#v}  # 去掉前缀的 v
-        echo "SING_BOX_VERSION=$SING_BOX_VERSION" >> $GITHUB_ENV
+      - name: Get the latest Sing-Box version
+        id: version
+        run: |
+          SING_BOX_VERSION=$(curl -sL -o /dev/null -w "%{url_effective}\n" https://github.com/SagerNet/sing-box/releases/latest | grep -oP 'tag/\K[^/]+')
+          SING_BOX_VERSION=${SING_BOX_VERSION#v}
+          echo "SING_BOX_VERSION=$SING_BOX_VERSION" >> $GITHUB_ENV
 
-    - name: Install sing-box
-      run: |
-        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
-        tar -xzf sing-box.tar.gz
-        chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
-        sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
-        sing-box version
+      - name: Install sing-box
+        run: |
+          curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
+          tar -xzf sing-box.tar.gz
+          chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
+          sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
+          sing-box version
 
-    - name: Fetch and Compile Sing-Box Rules from rules-icon
-      run: |
-        git remote add ruleset https://github.com/qljsyph/rulesedit.git
-        git fetch ruleset
-        git checkout ruleset/main -- rule/singbox
-        mkdir -p sing-box/geoip sing-box/geosite
-        for file in rule/singbox/*; do
+      - name: Fetch and Compile Sing-Box Rules from private repository
+        env:
+          SYNCRULE: ${{ secrets.syncrule }}
+        run: |
+          git remote add ruleset https://${SYNCRULE}@github.com/qljsyph/rrulesedit.git
+          git fetch ruleset
+          git checkout ruleset/main -- rule/singbox
+          mkdir -p sing-box/geoip sing-box/geosite
+          for file in rule/singbox/*; do
             filename=$(basename "$file")
             echo "Processing file: $filename"
-            # 通过正则表达式检查文件名是否以 "-ip" 结尾
             if [[ "$filename" =~ -ip\.(json|srs)$ ]]; then
-                echo "Moving $filename to sing-box/geoip"
-                mv "$file" sing-box/geoip/
+              echo "Moving $filename to sing-box/geoip"
+              mv "$file" sing-box/geoip/
             else
-                echo "Moving $filename to sing-box/geosite"
-                mv "$file" sing-box/geosite/
+              echo "Moving $filename to sing-box/geosite"
+              mv "$file" sing-box/geosite/
             fi
-        done
-        rm -rf rule/singbox sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
-        find . -type f -name "*.srs" -exec rm -f {} \;
-        find . -type f -name "*.json" -exec bash -c '
-        echo "Compiling: $1"
-        if ! sing-box rule-set compile "$1"; then
-          echo "Error compiling $1"
-          exit 1
-        fi
-        ' _ {} \;
-        git add .
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-          echo "No updates needed"
-        else
-          git commit -m "Merged singbox directory from rules-icon repository"
-          git push
-        fi
+          done
+          rm -rf rule/singbox sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
+          find . -type f -name "*.srs" -exec rm -f {} \;
+          find . -type f -name "*.json" -exec bash -c '
+            echo "Compiling: $1"
+            if ! sing-box rule-set compile "$1"; then
+              echo "Error compiling $1"
+              exit 1
+            fi
+          ' _ {} \;
+          git add .
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+            echo "No updates needed"
+          else
+            git commit -m "Merged singbox directory from rules-icon repository"
+            git push
+          fi
