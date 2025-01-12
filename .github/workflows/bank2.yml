@@ -54,7 +54,7 @@ jobs:
         env:
           SYNCRULE: ${{ secrets.syncrule }}
         run: |
-          git remote add ruleset https://${SYNCRULE}@github.com/qljsyph/rrulesedit.git
+          git remote add ruleset https://${SYNCRULE}@github.com/qljsyph/rulesedit.git
           git fetch ruleset
           git checkout ruleset/main -- rule/singbox
           mkdir -p sing-box/geoip sing-box/geosite
