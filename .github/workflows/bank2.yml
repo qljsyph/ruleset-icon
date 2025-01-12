@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'rule/singbox'
+      - 'singbox/**'
   schedule:
     - cron: '0 16 * * *'
   workflow_dispatch:
