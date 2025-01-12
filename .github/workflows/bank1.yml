@@ -12,7 +12,8 @@ permissions:
   contents: write
 
 jobs:
-  runs-on: ubuntu-latest
+  bot:
+    runs-on: ubuntu-latest
     steps:
       - name: 'Send telegram message'
         uses: appleboy/telegram-action@master
@@ -21,6 +22,7 @@ jobs:
           token: ${{ secrets.token }}
           message: |
             ruelset-icon mihomo compile start
+        
   sync_and_compile:
     runs-on: ubuntu-latest
 
