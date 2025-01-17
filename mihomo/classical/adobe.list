@@ -9,12 +9,14 @@ DOMAIN,i7pq6fgbsl.adobe.io
 DOMAIN,cd536oo20y.adobe.io
 DOMAIN,3hpvha4kvp.adobestats.io
 DOMAIN,xw0b2nn72i.adobe.io
+DOMAIN,stls.adobe.com-cn.edgesuite.net.globalredir.akadns.net
+DOMAIN,r503fb908.n5wo7.adobestats.io
+DOMAIN,cmi1l4log.n5wo7.adobestats.io
 # 域名后缀匹配
 DOMAIN-SUFFIX,adobe.io
 DOMAIN-SUFFIX,adobe.com
 DOMAIN-SUFFIX,adobeioruntime.net
 DOMAIN-SUFFIX,adobeccstatic.com
-DOMAIN-SUFFIX,stls.adobe.com-cn.edgesuite.net.globalredir.akadns.net
 DOMAIN-SUFFIX,tt.omtrdc.net
 DOMAIN-SUFFIX,alcs-cops.adobe.io
 DOMAIN-SUFFIX,assets.adobedtm.com
