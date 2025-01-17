@@ -18,3 +18,5 @@ payload:
     - +.gemini.google.com
     - +.makersuite.google.com
     - +.anthropic.com
+    - +.deepl.com
+    - +.midjourney.com
