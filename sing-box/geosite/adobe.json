@@ -3,19 +3,23 @@
   "rules": [
     {
       "domain": [
-        "cc-api-data.adobe.io",
-        "ic.adobe.io",
         "dyzt55url8.adobe.io",
-        "geo2.adobe.com",
-        "adobe.tt.omtrdec.net",
         "cctypekit.adobe.io",
         "i7pq6fgbsl.adobe.io",
         "cd536oo20y.adobe.io",
         "3hpvha4kvp.adobestats.io",
         "xw0b2nn72i.adobe.io",
-        "stls.adobe.com-cn.edgesuite.net.globalredir.akadns.net",
         "rwpofiibjn.adobestats.io",
-        "r503fb908.n5wo7.adobestats.io"
+        "r503fb908.n5wo7.adobestats.io",
+        "r5hacgq5w6.adobe.io",
+        "r5hacgq5w6.adobe.io",
+        "fh6oy9ytlq.adobestats.io",
+        "ktfwx69u.75rah.adobestats.io",
+        "stls.adobe.com-cn.edgesuite.net.globalredir.akadns.net",
+        "cc-api-data.adobe.io",
+        "ic.adobe.io",
+        "geo2.adobe.com",
+        "adobe.tt.omtrdec.net"
       ]
     },
     {
