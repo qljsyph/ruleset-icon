@@ -10,7 +10,7 @@ on:
     - cron: '0 16 * * *'
   workflow_dispatch:
   repository_dispatch:
-    types: [Remote1]
+    types: [remote-push]
 
 permissions:
   contents: write
