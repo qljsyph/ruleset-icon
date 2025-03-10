@@ -71,6 +71,7 @@ proxy-groups:
   - {name: Apple, type: select, proxies: [直连, 节点选择, 美国自动, 香港自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple_black.png"}
   - {name: Honorking, type: select, proxies: [香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 自动选择, 加坡节点, 韩国节点, 香港节点, 日本节点, 美国节点, 全部节点], icon: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/Icon/Large/honorkings.png"}
   - {name: Playstation, type: select, proxies: [直连, 香港故转], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Playstation.png"}
+  - {name: 英国节点, type: select, include-all: true, filter: "(?i)英国|🇬🇧|uk|UK", icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/UK.png"}
   - {name: 全球直连, type: select, proxies: [直连, 节点选择], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/China.png"}
   - {name: 漏网之鱼, type: select, proxies: [自动选择, 节点选择, 负载均衡, 直连, 其他地区自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png"}
   - {name: 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
@@ -89,9 +90,11 @@ proxy-groups:
   - {name: 全部节点, type: select, include-all: true}
 
 rules:
+  - SCRIPT,quic,REJECT-DROP  
   - RULE-SET,private_domain,直连
   - RULE-SET,direct1,直连
   - RULE-SET,direct_keyword,直连
+  - RULE-SET,giffgaff_domain,Giffgaff
   - RULE-SET,claude,Claude
   - RULE-SET,playstation,Playstation
   - RULE-SET,honorking,Honorking
@@ -113,6 +116,7 @@ rules:
   - RULE-SET,paypal_domain,PayPal
   - RULE-SET,geolocation-!cn,节点选择
   - RULE-SET,cn_domain,全球直连
+  - RULE-SET,giffgaff_ip,Giffgaff
   - RULE-SET,google_ip,Google,no-resolve
   - RULE-SET,twitter_ip,Twitter,no-resolve
   - RULE-SET,netflix_ip,NETFLIX,no-resolve
@@ -150,9 +154,11 @@ rule-providers:
   apple_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.yaml"}
   speedtest_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.yaml"}
   tiktok_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.yaml"}
+  giffgaff_domain: { <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/giffgaff.mrs" }
   gfw_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.yaml"}
   geolocation-!cn: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"}
   cn_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"}
+  
   cn_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"}
   private_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/private.yaml"} #私有IP rule set no resolve
   google_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"}
@@ -161,3 +167,4 @@ rule-providers:
   netflix_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.yaml"}
   honorking_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/honorking-ip.yaml"}
   spotify_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/spotify-ip.yaml"}
+  giffgaff_ip: { <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/giffgaff-ip.mrs" }
