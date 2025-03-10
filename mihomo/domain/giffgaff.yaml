@@ -1,8 +1,12 @@
 payload:
     - gspe1-ssl.ls.apple.com
+    - gspe21-ssl.ls.apple.com
+    - gsp-ssl.ls.apple.com
+    - gsp64-ssl.ls.apple.com
     - epdg.epc.mnc015.mcc234.pub.3gppnetwork.org
     - ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org
     - ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org
+    - 32-courier.push.apple.com
     - entsrv-uk.vodafone.com
     - vuk-gto.prod.ondemandconnectivity.com
     - +.giffgaff.design
