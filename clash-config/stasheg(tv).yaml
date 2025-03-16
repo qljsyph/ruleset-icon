@@ -89,11 +89,12 @@ rules:
 - RULE-SET,bahamut_domain,Bahamut
 - RULE-SET,hbo_domain,HBO
 - RULE-SET,speedtest_domain,Speedtest
+- RULE-SET,gfw_domain,节点选择
 - RULE-SET,geolocation-!cn,节点选择
 - RULE-SET,cn_domain,全球直连
 - RULE-SET,netflix_ip,NETFLIX,no-resolve
 - RULE-SET,spotify_ip,Spotify,no-resolve
-- RULE-SET,private_ip,直连,no-resolve #规则集IP规则相关联 private_ip
+- RULE-SET,private_ip,直连,no-resolve 
 - RULE-SET,cn_ip,全球直连,no-resolve
 - MATCH,漏网之鱼
 
@@ -119,6 +120,6 @@ rule-providers:
   geolocation-!cn: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"}
   cn_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"}
   cn_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"}
-  private_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/private.yaml"} #私有IP rule set no resolve
+  private_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/private.yaml"} 
   netflix_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.yaml"}
   spotify_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/spotify-ip.yaml"}
