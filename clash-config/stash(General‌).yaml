@@ -114,6 +114,7 @@ rules:
   - RULE-SET,netflix_domain,NETFLIX
   - RULE-SET,spotify,Spotify
   - RULE-SET,paypal_domain,PayPal
+  - RULE-SET,gfw_domain,节点选择
   - RULE-SET,geolocation-!cn,节点选择
   - RULE-SET,cn_domain,全球直连
   - RULE-SET,giffgaff_ip,Giffgaff
