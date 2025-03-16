@@ -38,9 +38,6 @@ dns:
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-  nameserver-policy:
-    "rule-set:private_domain,cn_domain": https://doh.pub/dns-query
-    "rule-set:geolocation-!cn": https://dns.google/dns-query
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
@@ -78,6 +75,7 @@ proxy-groups:
   - {name: 全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Link.png"}
 
 rules:
+- SCRIPT,quic,REJECT-DROP 
 - RULE-SET,private_domain,直连
 - RULE-SET,direct1,直连
 - RULE-SET,apple_domain,Apple
