@@ -90,7 +90,6 @@ rules:
   - SCRIPT,quic,REJECT-DROP  
   - RULE-SET,private_domain,直连
   - RULE-SET,direct1,直连
-  - RULE-SET,direct_keyword,直连
   - RULE-SET,giffgaff_domain,Giffgaff
   - RULE-SET,claude,Claude
   - RULE-SET,playstation,Playstation
@@ -126,13 +125,12 @@ rules:
   - MATCH,漏网之鱼
 
 rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
-  private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.list"}
+  private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"}
   direct1: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/Direct-enhance.yaml"}
-  direct_keyword: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qljsyph/rule/refs/heads/MTP-rules/domain-keyword.list"}
   applecn: {!!merge <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Apple.list"}
   playstation: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/playstation.yaml"}
   honorking: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/honorking.yaml"}
