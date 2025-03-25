@@ -441,13 +441,6 @@ proxy-groups:
     tolerance: 20
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png 
-  - name: 自动选择
-    type: url-test
-    include-all: true
-    tolerance: 20
-    interval: 300
-    filter: ^((?!(直连)).)*$
-    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png  
   - name: 负载均衡
     type: load-balance
     include-all: true
