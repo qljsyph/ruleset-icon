@@ -358,7 +358,7 @@ proxy-groups:
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png"
   - name: 香港节点
     include-all: true
-    filter: (?i)港|hk|hongkong|hong kong
+    filter: (?i)港|hk|hongkong
     type: select
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png
   - name: 加坡节点
