@@ -363,7 +363,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png
   - name: 加坡节点
     include-all: true
-    filter: (?i)新加坡|狮城|坡|SG|singapore
+    filter: (?i)新加坡|狮城|坡|SG
     type: select
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png
   - namme: 韩国节点
