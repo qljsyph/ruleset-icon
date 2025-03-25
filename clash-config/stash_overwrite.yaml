@@ -192,6 +192,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/OneDrive.png"
   - name: Microsoft
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -212,6 +213,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"
   - name: TikTok
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -232,6 +234,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png" 
   - name: Telegram
+    type: select  
     proxies:
       - 节点选择
       - 香港故转
@@ -252,6 +255,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png" 
   - name: NETFLIX
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -272,6 +276,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"
   - name: Spotify
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -292,6 +297,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Spotify.png"
   - name: PayPal
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -312,6 +318,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/PayPal_business.png"
   - name: Apple
+    type: select
     proxies:
       - 节点选择
       - 香港自动
@@ -319,6 +326,7 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple_black.png"
   - name: Honorking
+    type: select
     proxies:
       - 节点选择
       - 香港故转
@@ -339,16 +347,19 @@ proxy-groups:
       - 直连
     icon: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/Icon/Large/honorkings.png"
   - name: Playstation
+    type: select
     proxies:
       - 香港故转
       - 直连
     icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Playstation.png"
   - name: 国内策略
+    type: select
     proxies:
       - 节点选择
       - 直连 
     icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/China.png"
   - name: 兜底策略
+    type: select
     proxies:
       - 自动选择
       - 节点选择
@@ -366,7 +377,7 @@ proxy-groups:
     filter: (?i)新加坡|狮城|坡|SG
     type: select
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png
-  - namme: 韩国节点
+  - name: 韩国节点
     include-all: true
     filter: (?i)韩|韩国|KR|kora
     type: select
