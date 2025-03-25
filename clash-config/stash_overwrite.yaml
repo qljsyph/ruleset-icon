@@ -382,7 +382,6 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png
   - name: 香港故转
-    include-all: true
     filter: (?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$
     type: fallback
     include-all: true
@@ -390,7 +389,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png
   - name: 日本故转
-    include-all: true
     filter: (?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
     type: fallback
     include-all: true
@@ -398,7 +396,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png
   - name: 香港自动
-    include-all: true
     filter: (?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$
     type: url-test
     include-all: true
@@ -406,7 +403,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
   - name: 日本自动
-    include-all: true
     filter: (?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
     type: url-test
     include-all: true
@@ -414,7 +410,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
   - name: 美国自动
-    include-all: true
     filter: (?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$
     type: url-test
     include-all: true
@@ -422,7 +417,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
   - name: 韩国自动
-    include-all: true
     filter: (?=.*(韩|KR|(?i)States|Kora))^((?!(美|港|台|日|新|3|x3)).)*$
     type: url-test
     include-all: true
@@ -430,7 +424,6 @@ proxy-groups:
     interval: 300
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png  
   - name: 其他地区自动
-    include-all: true
     filter: ^((?!(港|美|日|韩|新|US|HK|JP|KR|SG|America|States|Japan|Korea|Singapore|Hong|直连)).)*$
     type: url-test
     include-all: true
