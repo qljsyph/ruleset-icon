@@ -491,7 +491,6 @@ rule-providers:
   spotify_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/spotify-ip.yaml"}
 
 rules:
-  - SCRIPT,quic,REJECT-DROP  
   - RULE-SET,private_domain,直连
   - RULE-SET,direct1,直连
   - RULE-SET,direct_keyword,直连
