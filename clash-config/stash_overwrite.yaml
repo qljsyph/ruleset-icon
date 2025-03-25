@@ -39,40 +39,421 @@ proxies:
   type: direct
   udp: true
 proxy-groups:
-  - {name: 节点选择, type: select, proxies: [香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 韩国节点, 香港节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Server.png"}
-  - {name: YouTube,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/YouTube.png"}
-  - {name: Google,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Google.png"}
-  - {name: Ai,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/AI.png"}
-  - {name: Claude, type: select, proxies: [美国节点, 全部节点], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Claud.png"}
-  - {name: Twitter,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Twitter.png"}
-  - {name: GitHub,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/GitHub.png"}
-  - {name: OneDrive,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/OneDrive.png"}
-  - {name: Microsoft,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
-  - {name: TikTok,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
-  - {name: Telegram,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
-  - {name: NETFLIX,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
-  - {name: Spotify,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Spotify.png"}
-  - {name: PayPal,type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/PayPal_business.png"}
-  - {name: Apple, type: select, proxies: [直连, 节点选择, 美国自动, 香港自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple_black.png"}
-  - {name: Honorking, type: select, proxies: [香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 自动选择, 加坡节点, 韩国节点, 香港节点, 日本节点, 美国节点, 全部节点], icon: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/Icon/Large/honorkings.png"}
-  - {name: Playstation, type: select, proxies: [直连, 香港故转], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Playstation.png"}
-  - {name: 国内策略, type: select, proxies: [直连, 节点选择], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/China.png"}
-  - {name: 兜底策略, type: select, proxies: [自动选择, 节点选择, 负载均衡, 直连, 其他地区自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png"}
-  - {name: 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
-  - {name: 加坡节点, type: select, include-all: true, filter: "(?i)新加坡|狮城|坡|SG", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
-  - {name: 韩国节点, type: select, include-all: true, filter: "(?i)韩|韩国|KR|kora", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/South_Korea.png"}
-  - {name: 日本节点, type: select, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
-  - {name: 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png"}
-  - {name: 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png"}
-  - {name: 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png"}
-  - {name: 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩|KR|(?i)States|Kora))^((?!(美|港|台|日|新|3|x3)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 其他地区自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(港|美|日|韩|新|US|HK|JP|KR|SG|America|States|Japan|Korea|Singapore|Hong|直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
-  - {name: 负载均衡, type: load-balance, include-all: true, tolerance: 150, interval: 300, filter: "(?=.*(0.1|0.5|(?i)States|Kora|韩国|俄罗斯|新加坡|越南))^((?!(🇸🇬|2x|x2|x3)).)*$", icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Load_balancing_2.png"}
-  - {name: 全部节点, type: select, include-all: true}
+  - name: 节点选择
+    type: select
+    proxies:
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 韩国节点
+      - 香港节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Server.png
+  - name: YouTube
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/YouTube.png"
+  - name: Google
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Google.png"
+  - name: Ai
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/AI.png"
+  - name: Claude
+    type: select
+    proxies:
+      - 美国节点
+      - 全部节点
+    icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Claud.png"
+  - name: Twitter
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Twitter.png"   
+  - name: GitHub
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/GitHub.png"
+  - name: OneDrive
+    type: select
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/OneDrive.png"
+  - name: Microsoft
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"
+  - name: TikTok
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png" 
+  - name: Telegram
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png" 
+  - name: NETFLIX
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"
+  - name: Spotify
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Spotify.png"
+  - name: PayPal
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/PayPal_business.png"
+  - name: Apple
+    proxies:
+      - 节点选择
+      - 香港自动
+      - 美国自动
+      - 直连
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple_black.png"
+  - name: Honorking
+    proxies:
+      - 节点选择
+      - 香港故转
+      - 日本故转
+      - 香港自动
+      - 日本自动
+      - 美国自动
+      - 韩国自动
+      - 其他地区自动
+      - 自动选择
+      - 加坡节点
+      - 香港节点
+      - 韩国节点
+      - 日本节点
+      - 美国节点
+      - 负载均衡
+      - 全部节点
+      - 直连
+    icon: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/Icon/Large/honorkings.png"
+  - name: Playstation
+    proxies:
+      - 香港故转
+      - 直连
+    icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Playstation.png"
+  - name: 国内策略
+    proxies:
+      - 节点选择
+      - 直连 
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/China.png"
+  - name: 兜底策略
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 负载均衡
+      - 直连
+      - 其他地区自动
+    icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png"
+  - name: 香港节点
+    include-all: true
+    filter: (?i)港|hk|hongkong|hong kong
+    type: select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png
+  - name: 加坡节点
+    include-all: true
+    filter: (?i)新加坡|狮城|坡|SG|singapore
+    type: select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png
+  - namme: 韩国节点
+    include-all: true
+    filter: (?i)韩|韩国|KR|kora
+    type: select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/South_Korea.png
+  - name: 日本节点
+    include-all: true
+    filter: (?i)日|jp|japan
+    type: select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png 
+  - name: 美国节点
+    include-all: true
+    filter: (?i)美|us|unitedstates|united states
+    type: select
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png
+  - name: 香港故转
+    include-all: true
+    filter: (?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$
+    type: fallback
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png
+  - name: 日本故转
+    include-all: true
+    filter: (?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
+    type: fallback
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png
+  - name: 香港自动
+    include-all: true
+    filter: (?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
+  - name: 日本自动
+    include-all: true
+    filter: (?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
+  - name: 美国自动
+    include-all: true
+    filter: (?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png
+  - name: 韩国自动
+    include-all: true
+    filter: (?=.*(韩|KR|(?i)States|Kora))^((?!(美|港|台|日|新|3|x3)).)*$
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png  
+  - name: 其他地区自动
+    include-all: true
+    filter: ^((?!(港|美|日|韩|新|US|HK|JP|KR|SG|America|States|Japan|Korea|Singapore|Hong|直连)).)*$
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png 
+  - name: 自动选择
+    type: url-test
+    include-all: true
+    tolerance: 20
+    interval: 300
+    filter: ^((?!(直连)).)*$
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png  
+  - name: 负载均衡
+    type: load-balance
+    include-all: true
+    tolerance: 150
+    interval: 300
+    filter: (?=.*(0.1|0.5|(?i)States|Kora|韩国|俄罗斯|新加坡|越南))^((?!(🇸🇬|2x|x2|x3)).)*$
+    icon: https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Load_balancing_2.png
+  - name: 全部节点
+    include-all: true
+    type: select
 
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
