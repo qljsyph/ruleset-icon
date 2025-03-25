@@ -1,0 +1,152 @@
+# 策略组相关
+pr: &pr {type: select, proxies: [节点选择, 香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 香港节点, 韩国节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连]}
+######### 锚点 end #######
+# 配置文件
+ipv6: true
+allow-lan: true
+mixed-port: 7890
+redir-port: 7892
+socks-port: 7891
+tproxy-port: 7894
+external-controller: 127.0.0.1:9090
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 192.168.1.10
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "rule-set:cn_domain"
+    - "rule-set:private_domain"
+    - "+.apple.com"
+    - "+.icloud.com"
+  default-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    "rule-set:private_domain,cn_domain": https://doh.pub/dns-query
+    "rule-set:geolocation-!cn": https://dns.google/dns-query
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
+proxies:
+- name: "直连"
+  type: direct
+  udp: true
+proxy-groups:
+  - {name: 节点选择, type: select, proxies: [香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 其他地区自动, 自动选择, 加坡节点, 韩国节点, 香港节点, 日本节点, 美国节点, 负载均衡, 全部节点, 直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Server.png"}
+  - {name: YouTube, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/YouTube.png"}
+  - {name: Google, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Google.png"}
+  - {name: Ai, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/AI.png"}
+  - {name: Claude, type: select, proxies: [美国节点, 全部节点], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Claud.png"}
+  - {name: Twitter, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Twitter.png"}
+  - {name: GitHub, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/GitHub.png"}
+  - {name: OneDrive, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/OneDrive.png"}
+  - {name: Microsoft, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
+  - {name: TikTok, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
+  - {name: Telegram, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
+  - {name: NETFLIX, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
+  - {name: Spotify, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Spotify.png"}
+  - {name: PayPal, !!merge <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/PayPal_business.png"}
+  - {name: Apple, type: select, proxies: [直连, 节点选择, 美国自动, 香港自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple_black.png"}
+  - {name: Honorking, type: select, proxies: [香港故转, 日本故转, 香港自动, 日本自动, 美国自动, 韩国自动, 自动选择, 加坡节点, 韩国节点, 香港节点, 日本节点, 美国节点, 全部节点], icon: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/Icon/Large/honorkings.png"}
+  - {name: Playstation, type: select, proxies: [直连, 香港故转], icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Playstation.png"}
+  - {name: 国内策略, type: select, proxies: [直连, 节点选择], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/China.png"}
+  - {name: 兜底策略, type: select, proxies: [自动选择, 节点选择, 负载均衡, 直连, 其他地区自动], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Omission.png"}
+  - {name: 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
+  - {name: 加坡节点, type: select, include-all: true, filter: "(?i)新加坡|狮城|坡|SG", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
+  - {name: 韩国节点, type: select, include-all: true, filter: "(?i)韩|韩国|KR|kora", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/South_Korea.png"}
+  - {name: 日本节点, type: select, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
+  - {name: 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png"}
+  - {name: 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png"}
+  - {name: 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Failover.png"}
+  - {name: 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(拒绝|韩|KR|(?i)States|Kora))^((?!(美|港|台|日|新|3|x3)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 其他地区自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(港|美|日|韩|新|US|HK|JP|KR|SG|America|States|Japan|Korea|Singapore|Hong|直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连,拒绝)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Auto_Link.png"}
+  - {name: 负载均衡, type: load-balance, include-all: true, tolerance: 150, interval: 300, filter: "(?=.*(0.1|0.5|(?i)States|Kora|韩国|俄罗斯|新加坡|越南))^((?!(🇸🇬|2x|x2|x3)).)*$", icon: "https://raw.githubusercontent.com/qljsyph/HOMOMIX/refs/heads/main/Icon/Color/Large/Load_balancing_2.png"}
+  - {name: 全部节点, type: select, include-all: true}
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+rule-providers: 
+  private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"}
+  direct1: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/Direct-enhance.yaml"}
+  direct_keyword: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qljsyph/rule/refs/heads/MTP-rules/domain-keyword.list"}
+  applecn: {!!merge <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Apple.list"}
+  playstation: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/playstation.yaml"}
+  honorking: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/honorking.yaml"}
+  proxylite: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qljsyph/rule/refs/heads/MTP-rules/ProxyLiteqcyhub.list"}
+  claude: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qljsyph/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list"}
+  ai: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/domain/AI.yaml"}
+  youtube_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"}
+  google_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"}
+  github_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"}
+  telegram_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"}
+  twitter_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/twitter.yaml"}
+  netflix_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.yaml"}
+  spotify: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/spotify.yaml"}
+  paypal_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.yaml"}
+  onedrive_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.yaml"}
+  microsoft_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml"}
+  apple_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.yaml"}
+  tiktok_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.yaml"}
+  gfw_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.yaml"}
+  geolocation-!cn: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"}
+  cn_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"}
+  cn_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"}
+  private_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/private.yaml"} #私有IP rule set no resolve
+  google_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"}
+  telegram_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"}
+  twitter_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/twitter.yaml"}
+  netflix_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.yaml"}
+  honorking_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/honorking-ip.yaml"}
+  spotify_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/spotify-ip.yaml"}
+
+rules:
+  - SCRIPT,quic,REJECT-DROP  
+  - RULE-SET,private_domain,直连
+  - RULE-SET,direct1,直连
+  - RULE-SET,direct_keyword,直连
+  - RULE-SET,claude,Claude
+  - RULE-SET,playstation,Playstation
+  - RULE-SET,honorking,Honorking
+  - RULE-SET,apple_domain,Apple
+  - RULE-SET,applecn,Apple
+  - RULE-SET,proxylite,节点选择
+  - RULE-SET,ai,Ai
+  - RULE-SET,twitter_domain,Twitter
+  - RULE-SET,github_domain,GitHub
+  - RULE-SET,youtube_domain,YouTube
+  - RULE-SET,google_domain,Google
+  - RULE-SET,onedrive_domain,OneDrive
+  - RULE-SET,microsoft_domain,Microsoft
+  - RULE-SET,tiktok_domain,TikTok
+  - RULE-SET,telegram_domain,Telegram
+  - RULE-SET,netflix_domain,NETFLIX
+  - RULE-SET,spotify,Spotify
+  - RULE-SET,paypal_domain,PayPal 
+  - RULE-SET,gfw_domain,节点选择
+  - RULE-SET,geolocation-!cn,节点选择
+  - RULE-SET,cn_domain,国内策略
+  - RULE-SET,google_ip,Google,no-resolve
+  - RULE-SET,twitter_ip,Twitter,no-resolve
+  - RULE-SET,netflix_ip,NETFLIX,no-resolve
+  - RULE-SET,telegram_ip,Telegram,no-resolve
+  - RULE-SET,honorking_ip,Honorking,no-resolve
+  - RULE-SET,spotify_ip,Spotify,no-resolve
+  - RULE-SET,private_ip,直连,no-resolve #规则集IP规则相关联 private_ip
+  - RULE-SET,cn_ip,国内策略
+  - MATCH,兜底策略
