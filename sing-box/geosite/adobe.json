@@ -23,11 +23,13 @@
     {
       "domain_suffix": [
         "adobe.io",
+        "ic.adobe.io",
         "adobe.com",
         "adobeioruntime.net",
         "adobeccstatic.com",
         "tt.omtrdc.net",
         "alcs-cops.adobe.io",
+        "adobestats.io",
         "assets.adobedtm.com"
       ]
     },
