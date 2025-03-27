@@ -20,7 +20,9 @@
     },
     {
       "domain_suffix": [
-        "adobe.io"
+        "adobe.io",
+        "ic.adobe.io",
+        "adobestats.io"
       ]
     },
     {
