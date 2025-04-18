@@ -100,3 +100,11 @@ jobs:
           git commit -m "Updated mihomo rules"
           git push
         fi
+    - name: Notify Telegram on failure
+      if: failure()
+      run: |
+        MESSAGE="🚨 GitHub Actions 失败 - ${{ github.workflow }} (仓库: ${{ github.repository }})"
+        curl -s -X POST \
+        -H "Content-Type: application/json" \
+        -d "{\"chat_id\": \"${{ secrets.bot }}\", \"text\": \"$MESSAGE\"}" \
+        "https://api.telegram.org/bot${{ secrets.token }}/sendMessage"

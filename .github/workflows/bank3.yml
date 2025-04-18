@@ -1,0 +1,69 @@
+name: 资源转换
+
+on:
+  schedule:
+    - cron: '0 19 * * *' # 北京时间凌晨 3 点自动运行
+  workflow_dispatch: # 手动触发工作流
+
+permissions:
+  contents: write
+
+jobs:
+  resTrans:
+    runs-on: ubuntu-latest
+    env:
+      TZ: 'Asia/Shanghai'
+
+    steps:
+    - name: 拉取代码库
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.syncrule }}
+
+    - name: 安装 Mihomo
+      run: |
+        curl -sL https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/version.txt | \
+          xargs -I {} curl -sL "https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-{}.gz" | \
+          gunzip -c > /usr/local/bin/mihomo && chmod +x /usr/local/bin/mihomo
+
+    #- name: 转换yaml规则
+    #  run: |
+    #    for rule in \
+    #     "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml Proxy_Domain.yaml mihomo/domain/Proxy_Domain.mrs domain" \
+    #      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml ChinaMax_Domain.yaml mihomo/domain/ChinaMax_Domain.mrs domain" \
+    #      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.yaml ChinaMax_IP.yaml mihomo/ipcidr/ChinaMax_IP.mrs ipcidr" \
+    #      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Domain.yaml Apple_Domain.yaml mihomo/domain/Apple_Domain.mrs domain"; do
+    #      IFS=' ' read -r url file target type <<< "$rule"
+    #      curl -sL "$url" -o "$file"
+    #      mkdir -p "$(dirname "$target")"
+    #      mihomo convert-ruleset "$type" yaml "$file" "$target"
+    #      rm "$file"
+    #    done 
+    -  name: 转换lsit规则
+       run: |
+        for rule in \
+          "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/geo/domain/ai-domain.list ai-domain.list mihomo/domain/ai-domain.mrs domain"; do
+          "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/asn/combined/China-ASN-combined.list " China-ASN-combined.list mihomo/ipcidr/China-ASN-combined.mrs ipcidr"; do
+          IFS=' ' read -r url file target type <<< "$rule"
+          curl -sL "$url" -o "$file"
+          mkdir -p "$(dirname "$target")"
+          mihomo convert-ruleset "$type" text "$file" "$target"
+          rm "$file"
+        done
+
+    - name: 提交并推送更改
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "更新于 $(date +"%Y-%m-%d %H:%M")" || echo "无需提交更新"
+        git pull --rebase
+        git push    
+    - name: Notify Telegram on failure
+      if: failure()
+      run: |
+          MESSAGE="🚨 GitHub Actions 失败 - ${{ github.workflow }} (仓库: ${{ github.repository }})"
+          curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\": \"${{ secrets.bot }}\", \"text\": \"$MESSAGE\"}" \
+            "https://api.telegram.org/bot${{ secrets.token }}/sendMessage"
