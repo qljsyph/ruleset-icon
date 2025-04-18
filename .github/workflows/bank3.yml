@@ -2,8 +2,8 @@ name: 资源转换
 
 on:
   schedule:
-    - cron: '0 19 * * *' # 北京时间凌晨 3 点自动运行
-  workflow_dispatch: # 手动触发工作流
+    - cron: '0 15 * * *' 
+  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -56,7 +56,7 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
-        git commit -m "更新于 $(date +"%Y-%m-%d %H:%M")" || echo "无需提交更新"
+        git commit -m "更新于 $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "无变更可提交"
         git pull --rebase
         git push    
     - name: Notify Telegram on failure
