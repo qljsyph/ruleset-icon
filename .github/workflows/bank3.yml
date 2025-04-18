@@ -39,12 +39,15 @@ jobs:
     #      mihomo convert-ruleset "$type" yaml "$file" "$target"
     #      rm "$file"
     #    done 
-    -  name: 转换lsit规则
-       run: |
-        for rule in \
-          "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/geo/domain/ai-domain.list ai-domain.list mihomo/domain/ai-domain.mrs domain"; do
-          "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/asn/combined/China-ASN-combined.list " China-ASN-combined.list mihomo/ipcidr/China-ASN-combined.mrs ipcidr"; do
+    - name: 转换 list 规则
+      run: |
+        rules=(
+           "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/geo/domain/ai-domain.list ai-domain.list mihomo/domain/ai-domain.mrs domain"
+           "https://raw.githubusercontent.com/ForestL18/rules-dat/refs/heads/mihomo/asn/combined/China-ASN-combined.list China-ASN-combined.list mihomo/ipcidr/China-ASN-combined.mrs ipcidr"
+         )
+        for rule in "${rules[@]}"; do
           IFS=' ' read -r url file target type <<< "$rule"
+          echo "Downloading $file from $url"
           curl -sL "$url" -o "$file"
           mkdir -p "$(dirname "$target")"
           mihomo convert-ruleset "$type" text "$file" "$target"
