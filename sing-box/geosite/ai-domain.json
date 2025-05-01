@@ -2,10 +2,72 @@
   "version": 1,
   "rules": [
     {
-      "domain": []
+      "domain": [
+        "openaiapi-site.azureedge.net",
+        "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
+        "openaicomproductionae4b.blob.core.windows.net",
+        "production-openaicom-storage.azureedge.net",
+        "pplx-res.cloudinary.com",
+        "servd-anthropic-website.b-cdn.net",
+        "ai.google.dev",
+        "alkalicore-pa.clients6.google.com",
+        "alkalimakersuite-pa.clients6.google.com",
+        "o33249.ingest.sentry.io",
+        "openaicom.imgix.net",
+        "browser-intake-datadoghq.com"
+      ]
     },
     {
-      "domain_suffix": []
+      "domain_suffix": [
+        "poecdn.net",
+        "anthropic.com",
+        "notebooklm.google",
+        "poe.com",
+        "chutes.ai",
+        "dify.ai",
+        "gemini.google",
+        "meta.ai",
+        "mistral.ai",
+        "openart.ai",
+        "openrouter.ai",
+        "chatgpt.com",
+        "chat.com",
+        "oaistatic.com",
+        "pplx.ai",
+        "openai.com",
+        "sora.com",
+        "generativeai.google",
+        "deepmind.google",
+        "deepmind.com",
+        "claudeusercontent.com",
+        "perplexity.ai",
+        "oaiusercontent.com",
+        "claude.ai",
+        "cursor.sh",
+        "groq.com",
+        "hf.co",
+        "huggingface.co",
+        "grok.com",
+        "x.ai",
+        "cursor-cdn.com",
+        "cursor.com",
+        "clipdrop.co",
+        "cursorapi.com",
+        "jasper.ai",
+        "notebooklm.google.com",
+        "turn.livekit.cloud",
+        "host.livekit.cloud",
+        "chatgpt.livekit.cloud",
+        "generativelanguage.googleapis.com",
+        "makersuite.google.com",
+        "proactivebackend-pa.googleapis.com",
+        "geller-pa.googleapis.com",
+        "aistudio.google.com",
+        "bard.google.com",
+        "gemini.google.com",
+        "gateway.ai.cloudflare.com",
+        "openai.com.cdn.cloudflare.net"
+      ]
     }
   ]
 }
